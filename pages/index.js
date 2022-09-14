@@ -32,11 +32,21 @@ const HomePage = (props) => {
     
   )
 }
-export async function getStaticProps() {
-  return {
-    props: {
-      meetups: DummieMeetups
-    }, // will be passed to the page component as props
+
+export async function getServerSideProps(context){
+  const req =  context.req
+  const res = context.res
+  return{
+    props:{
+      meetups : DummieMeetups
+    }
   }
 }
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       meetups: DummieMeetups
+//     }, // will be passed to the page component as props
+//   }
+// }
 export default HomePage
