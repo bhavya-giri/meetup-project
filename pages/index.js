@@ -24,16 +24,19 @@ const DummieMeetups = [
 },
     
 ]
-const HomePage = () => {
-  const [loadedMeetups,setLoadedMeetups] = useState([])
-  useEffect(()=>{setLoadedMeetups(DummieMeetups)},[])
+const HomePage = (props) => {
+  
   return (
-    <div>
-      <MeetupList meetups ={loadedMeetups}/>
-
-      
-    </div>
+   
+      <MeetupList meetups ={props.meetups}/>
+    
   )
 }
-
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: DummieMeetups
+    }, // will be passed to the page component as props
+  }
+}
 export default HomePage
