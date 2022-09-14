@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MeetupList from '../components/meetups/MeetupList'
 const DummieMeetups = [
     {
@@ -25,9 +25,11 @@ const DummieMeetups = [
     
 ]
 const HomePage = () => {
+  const [loadedMeetups,setLoadedMeetups] = useState([])
+  useEffect(()=>{setLoadedMeetups(DummieMeetups)},[])
   return (
     <div>
-      <MeetupList meetups ={DummieMeetups}/>
+      <MeetupList meetups ={loadedMeetups}/>
 
       
     </div>
